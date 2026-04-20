@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photon-Expo 2026 — Festival des Arts Visuels — Offemont</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange:      #E8651A;
+            --rose:        #C03070;
+            --violet:      #8B2F6E;
+            --beige:       #FAF7F2;
+            --beige-card:  #FFFFFF;
+            --beige-light: #F2EDE4;
+            --dark-text:   #2A2020;
+            --mid-text:    #5A4A42;
+            --spacing:     2rem;
+            --gradient:    linear-gradient(135deg, var(--orange), var(--violet));
+        }
+        * { box-sizing: border-box; }
+        body { font-family:'Montserrat',sans-serif; line-height:1.8; margin:0; padding:0; background:var(--beige); color:var(--dark-text); }
+
+        /* HEADER */
+        header { background:var(--gradient); color:white; padding:3rem 1rem 2.5rem; text-align:center; position:relative; overflow:hidden; }
+        header::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; border-radius:50%; background:rgba(255,255,255,0.07); }
+        header::after  { content:''; position:absolute; bottom:-80px; left:-40px; width:280px; height:280px; border-radius:50%; background:rgba(255,255,255,0.05); }
+        .logo-container { width:170px; margin:0 auto 1.5rem; }
+        .logo-container img { width:100%; height:auto; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
+        header h1 { font-size:2.6rem; font-weight:700; margin:0 0 0.4rem; letter-spacing:0.04em; text-shadow:0 2px 8px rgba(0,0,0,0.2); }
+        .header-subtitle { font-weight:300; font-size:1.1rem; margin:0 0 1.5rem; opacity:0.92; }
+
+        /* COUNTDOWN */
+        .countdown-band { display:inline-flex; gap:1.2rem; background:rgba(255,255,255,0.15); border-radius:50px; padding:0.7rem 2rem; backdrop-filter:blur(4px); margin-top:0.5rem; }
+        .countdown-item { text-align:center; }
+        .countdown-num  { font-size:2rem; font-weight:700; display:block; line-height:1; }
+        .countdown-label{ font-size:0.62rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; opacity:0.85; }
+        .countdown-sep  { font-size:1.8rem; font-weight:300; opacity:0.6; align-self:center; padding-bottom:0.3rem; }
+
+        /* BANNERS */
+        .date-banner       { background:var(--orange); color:white; text-align:center; padding:0.8rem 1rem; font-weight:600; font-size:1rem; }
+        .vernissage-banner { background:var(--violet); color:white; text-align:center; padding:0.6rem 1rem; font-size:0.95rem; }
+
+        /* CONTAINER */
+        .container { max-width:860px; margin:var(--spacing) auto; padding:0 var(--spacing); }
+
+        /* SECTION TITLES */
+        h2 { color:var(--orange); border-bottom:2px solid var(--orange); padding-bottom:0.5rem; margin-top:var(--spacing); font-size:1.35rem; }
+        h3 { color:var(--violet); font-size:1rem; margin:1.2rem 0 0.5rem; }
+
+        /* CARDS */
+        .card { background:var(--beige-card); border-radius:12px; padding:1.8rem; margin-bottom:1.5rem; box-shadow:0 3px 14px rgba(140,50,100,0.08); border-left:4px solid var(--orange); }
+        .card-violet { border-left-color:var(--violet); }
+        .card-note { margin-top:1rem; padding:0.8rem 1rem; background:var(--beige-light); border-radius:6px; font-style:italic; color:var(--mid-text); font-size:0.92rem; }
+
+        /* INFO GRID */
+        .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(175px,1fr)); gap:1rem; margin-top:1rem; }
+        .info-item { padding:1rem 1.2rem; background:var(--beige-light); border-radius:8px; }
+        .info-item strong { display:block; color:var(--violet); font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.3rem; }
+
+        /* HIGHLIGHT */
+        .highlight-box { background:var(--gradient); color:white; padding:1.3rem 1.5rem; border-radius:10px; text-align:center; margin:1.5rem 0; }
+        .highlight-box strong { font-size:1.05rem; }
+        .highlight-box p { margin:0.4rem 0 0; opacity:0.92; font-style:italic; font-size:0.93rem; }
+
+        /* DISCIPLINES */
+        .tag-wrap { display:flex; flex-wrap:wrap; gap:0.7rem; margin-top:1rem; }
+        .tag { background:white; padding:0.4rem 1rem; border-radius:20px; font-size:0.85rem; border:1.5px solid var(--orange); color:var(--orange); font-weight:600; }
+
+        /* STATS */
+        .stats-row { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin:1.5rem 0; }
+        .stat-box { background:var(--beige-light); border-radius:10px; padding:1rem 1.5rem; text-align:center; min-width:110px; border-bottom:3px solid var(--orange); }
+        .stat-num   { font-size:2rem; font-weight:700; color:var(--orange); line-height:1; }
+        .stat-label { font-size:0.72rem; color:var(--mid-text); margin-top:0.3rem; text-transform:uppercase; letter-spacing:0.06em; }
+
+        /* PROGRAMME */
+        .prog-day { margin-bottom:1.8rem; }
+        .day-title { background:var(--gradient); color:white; padding:0.65rem 1.2rem; border-radius:7px; font-weight:700; margin-bottom:0.8rem; font-size:0.95rem; }
+        .prog-item { display:flex; gap:1rem; padding:0.7rem 0; border-bottom:1px solid var(--beige-light); align-items:flex-start; }
+        .prog-time { font-weight:600; color:var(--violet); min-width:100px; font-size:0.87rem; flex-shrink:0; }
+        .prog-desc { color:var(--dark-text); font-size:0.92rem; }
+        .prog-desc em { color:var(--mid-text); font-size:0.83rem; }
+
+        /* ARTISTS GRIDS */
+        .guests-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:0.9rem; margin-top:1rem; }
+        .guest-card { background:var(--beige-light); border-radius:8px; padding:0.9rem 0.8rem; text-align:center; transition:transform 0.2s,box-shadow 0.2s; }
+        .guest-card:hover { transform:translateY(-3px); box-shadow:0 6px 16px rgba(140,50,100,0.12); }
+        .guest-avatar { width:46px; height:46px; background:var(--gradient); border-radius:50%; margin:0 auto 0.5rem; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:1rem; }
+        .guest-avatar.honor { background:linear-gradient(135deg,#FFB347,#E8651A); }
+        .guest-avatar.artist { background:linear-gradient(135deg,#8B2F6E,#C03070); }
+        .guest-avatar.conf  { background:linear-gradient(135deg,#2c7bb6,#1a5a8f); }
+        .guest-avatar.atelier{ background:linear-gradient(135deg,#2ecc71,#1a9e55); }
+        .guest-name { font-weight:600; font-size:0.8rem; color:var(--dark-text); line-height:1.3; }
+        .guest-role { font-size:0.7rem; color:var(--mid-text); margin-top:0.2rem; }
+
+        /* ATELIERS */
+        .ateliers-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1rem; margin-top:1rem; }
+        .atelier-card { background:var(--beige-light); border-radius:8px; padding:1.1rem; border-top:3px solid var(--orange); }
+        .atelier-card h4 { color:var(--orange); margin:0 0 0.4rem; font-size:0.93rem; }
+        .atelier-card p { margin:0; color:var(--mid-text); font-size:0.84rem; }
+
+        /* LIEU */
+        .lieu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:1rem; }
+        .lieu-card { background:var(--beige-light); border-radius:8px; padding:1.2rem; border-top:3px solid var(--violet); }
+        .lieu-card h4 { color:var(--violet); margin:0 0 0.5rem; font-size:0.93rem; }
+        .lieu-card p  { margin:0; color:var(--mid-text); font-size:0.86rem; }
+
+        /* CONTACT */
+        .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1rem; }
+        .contact-item { padding:1rem 1.2rem; background:var(--beige-light); border-radius:8px; }
+        .contact-item strong { display:block; color:var(--violet); margin-bottom:0.3rem; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; }
+
+        /* BADGES */
+        .badge { display:inline-block; padding:0.22rem 0.65rem; border-radius:20px; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; vertical-align:middle; }
+        .badge-honor  { background:linear-gradient(135deg,#FFB347,#E8651A); color:white; }
+        .badge-free   { background:linear-gradient(135deg,#2ecc71,#27ae60); color:white; }
+        .badge-fpf    { background:linear-gradient(135deg,#2c7bb6,#1a5a8f); color:white; }
+
+        /* BUTTON */
+        .btn { display:inline-block; background:var(--gradient); color:white; padding:0.8rem 1.8rem; border-radius:30px; text-decoration:none; font-weight:600; margin-top:1rem; transition:transform 0.2s,box-shadow 0.2s; font-size:0.95rem; }
+        .btn:hover { transform:translateY(-2px); box-shadow:0 6px 16px rgba(232,101,26,0.35); color:white; }
+
+        /* FOOTER */
+        footer { background:var(--dark-text); color:rgba(255,255,255,0.7); text-align:center; padding:2rem 1rem; font-size:0.85rem; margin-top:3rem; }
+        footer strong { color:white; }
+
+        a { color:var(--orange); text-decoration:none; }
+        a:hover { color:var(--violet); }
+
+        @media(max-width:600px){
+            header h1 { font-size:1.8rem; }
+            .countdown-band { gap:0.6rem; padding:0.5rem 0.9rem; }
+            .countdown-num  { font-size:1.3rem; }
+            .container { padding:0 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="images/logo-photon-expo.jpg" alt="Photon-Expo 2026">
+    </div>
+    <h1>Photon-Expo 2026</h1>
+    <div class="header-subtitle">Festival des Arts Visuels — Offemont, Territoire de Belfort</div>
+    <div class="countdown-band">
+        <div class="countdown-item"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Jours</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Heures</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">Minutes</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label">Secondes</span></div>
+    </div>
+</header>
+
+<div class="vernissage-banner">🥂 &nbsp;Vernissage : <strong>Vendredi 29 mai 2026 à 18h30</strong></div>
+<div class="date-banner">📅 &nbsp;Samedi 30 &amp; Dimanche 31 mai 2026 &nbsp;|&nbsp; 9h – 18h &nbsp;|&nbsp; Salle de la MIEL + Gymnase, Offemont &nbsp;|&nbsp; <strong>Entrée gratuite</strong></div>
+
+<div class="container">
+
+    <!-- LE FESTIVAL -->
+    <section>
+        <h2>Le festival</h2>
+        <div class="card">
+            <p><strong>Photon-Expo</strong> est la nouvelle identité du festival <em>Photo-Passion</em> d'Offemont, élargi en 2026 à l'ensemble des arts visuels. Organisé par le club <strong>Phot'Offemont</strong>, ce rendez-vous exceptionnel rassemble photographes, peintres, sculpteurs, artistes numériques et associations partenaires autour d'une célébration de la création visuelle contemporaine.</p>
+            <p>2026 marque également les <strong>200 ans de la découverte de la photographie</strong>, célébrés en partenariat avec la <strong>Fédération Photographique de France</strong>. <span class="badge badge-fpf">FPF</span></p>
+
+            <div class="stats-row">
+                <div class="stat-box"><div class="stat-num">27+</div><div class="stat-label">Photographes</div></div>
+                <div class="stat-box"><div class="stat-num">8</div><div class="stat-label">Artistes</div></div>
+                <div class="stat-box"><div class="stat-num">1500–2000</div><div class="stat-label">Visiteurs attendus</div></div>
+                <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">Conférences</div></div>
+                <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Ateliers</div></div>
+            </div>
+
+            <div class="tag-wrap">
+                <span class="tag">📷 Photographie</span>
+                <span class="tag">🎨 Peinture</span>
+                <span class="tag">🗿 Sculpture</span>
+                <span class="tag">🤖 Art &amp; IA</span>
+                <span class="tag">💎 Bijoux</span>
+                <span class="tag">🧵 Patchwork</span>
+                <span class="tag">🌿 Nature &amp; Animaux</span>
+                <span class="tag">🛸 Drones</span>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Entrée libre et gratuite — ouvert à tous</strong>
+                <p>Familles, scolaires, passionnés d'art et curieux de tout âge — bienvenue !</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMATIONS PRATIQUES -->
+    <section>
+        <h2>Informations pratiques</h2>
+        <div class="card">
+            <div class="info-grid">
+                <div class="info-item"><strong>🥂 Vernissage</strong>Vendredi 29 mai 2026<br>à partir de 18h30</div>
+                <div class="info-item"><strong>📅 Exposition</strong>Samedi 30 &amp; Dimanche 31 mai 2026</div>
+                <div class="info-item"><strong>🕘 Horaires</strong>9h00 – 18h00<br>les deux jours</div>
+                <div class="info-item"><strong>📍 Lieu</strong>Salle de la MIEL<br>+ Gymnase, Offemont</div>
+                <div class="info-item"><strong>🎟️ Entrée</strong>Gratuite<br>Sans réservation</div>
+                <div class="info-item"><strong>🍔 Restauration</strong>Buvette + 4 Food-trucks<br>sur place</div>
+            </div>
+        </div>
+        <div class="lieu-grid">
+            <div class="lieu-card"><h4>🏛️ Salle de la MIEL</h4><p>Expositions photographiques, peintures, sculptures. Salle des aînés : conférences et projections de films.</p></div>
+            <div class="lieu-card"><h4>🏋️ Gymnase</h4><p>Grands formats, ateliers participatifs, démonstrations Art &amp; IA, drones.</p></div>
+            <div class="lieu-card"><h4>🌿 Chemin &amp; Parvis</h4><p>Photos affichées le long du chemin entre la MIEL et le Gymnase, et sur le parvis.</p></div>
+        </div>
+    </section>
+
+    <!-- PROGRAMME -->
+    <section>
+        <h2>Programme</h2>
+        <div class="card">
+            <div class="prog-day">
+                <div class="day-title">Vendredi 29 mai — Vernissage</div>
+                <div class="prog-item"><span class="prog-time">18h30</span><span class="prog-desc">Vernissage officiel — accueil des invités, exposants et photographes</span></div>
+            </div>
+            <div class="prog-day">
+                <div class="day-title">Samedi 30 mai 2026</div>
+                <div class="prog-item"><span class="prog-time">9h00</span><span class="prog-desc">Ouverture des portes</span></div>
+                <div class="prog-item"><span class="prog-time">Toute la journée</span><span class="prog-desc">Expositions — photographies, peintures, sculptures, bijoux, patchwork, art numérique &amp; IA</span></div>
+                <div class="prog-item"><span class="prog-time">Toute la journée</span><span class="prog-desc">Ateliers : IA (Thierry Voitot), cyanotype (Phot'Offemont), écriture (Marie-Thérèse Lecrille) <em>(Gymnase)</em></span></div>
+                <div class="prog-item"><span class="prog-time">Toute la journée</span><span class="prog-desc">Conférences et projections de films <em>(Salle des aînés, MIEL)</em></span></div>
+                <div class="prog-item"><span class="prog-time">En soirée</span><span class="prog-desc">🔭 Observation du ciel avec le CERAP + démonstration Terella <em>(sous réserve de météo)</em></span></div>
+                <div class="prog-item"><span class="prog-time">Soir</span><span class="prog-desc">Repas convivial — exposants, animateurs et bénévoles</span></div>
+                <div class="prog-item"><span class="prog-time">18h00</span><span class="prog-desc">Fermeture</span></div>
+            </div>
+            <div class="prog-day">
+                <div class="day-title">Dimanche 31 mai 2026</div>
+                <div class="prog-item"><span class="prog-time">9h00</span><span class="prog-desc">Ouverture des portes</span></div>
+                <div class="prog-item"><span class="prog-time">Toute la journée</span><span class="prog-desc">Expositions, ateliers et conférences</span></div>
+                <div class="prog-item"><span class="prog-time">17h30</span><span class="prog-desc">Clôture du festival — mot des organisateurs</span></div>
+                <div class="prog-item"><span class="prog-time">18h00</span><span class="prog-desc">Fermeture</span></div>
+            </div>
+            <div class="card-note">Programme indicatif — des ajustements pourront intervenir. Consultez cette page régulièrement.</div>
+        </div>
+    </section>
+
+    <!-- INVITÉS D'HONNEUR -->
+    <section>
+        <h2>Invités d'honneur</h2>
+        <div class="card card-violet">
+            <div class="guests-grid">
+                <div class="guest-card">
+                    <div class="guest-avatar honor">CZ</div>
+                    <div class="guest-name">Catherine ZANINO</div>
+                    <div class="guest-role">Invitée d'honneur <span class="badge badge-honor">★</span></div>
+                </div>
+                <div class="guest-card">
+                    <div class="guest-avatar honor">JZ</div>
+                    <div class="guest-name">Jean-Louis ZANINO</div>
+                    <div class="guest-role">Invité d'honneur <span class="badge badge-honor">★</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTOGRAPHES INVITÉS -->
+    <section>
+        <h2>Photographes invités</h2>
+        <div class="card">
+            <div class="guests-grid">
+                <div class="guest-card"><div class="guest-avatar">CA</div><div class="guest-name">Catherine ANGYAN</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">DB</div><div class="guest-name">Djemila BESUCHET</div><div class="guest-role">Photographie sous-marine</div></div>
+                <div class="guest-card"><div class="guest-avatar">AG</div><div class="guest-name">Anne GERLINGER</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">NH</div><div class="guest-name">Nathalie HAMM</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">MH</div><div class="guest-name">Martine HUIN</div><div class="guest-role">Rêves de Brume</div></div>
+                <div class="guest-card"><div class="guest-avatar">EJ</div><div class="guest-name">Evelyne JARDOT</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">GM</div><div class="guest-name">Ghislaine MENETRIER</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">CM</div><div class="guest-name">Claire MORMINA</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">SM</div><div class="guest-name">Suzanne MOURLEVAT</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">PC</div><div class="guest-name">Pierre CRABBE</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">CD</div><div class="guest-name">Cédric DAMELINCOURT</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">DD</div><div class="guest-name">Dominique DELFINO</div><div class="guest-role">Photo + Projection films</div></div>
+                <div class="guest-card"><div class="guest-avatar">JD</div><div class="guest-name">Jean-François DELHOM</div><div class="guest-role">Glaciologie</div></div>
+                <div class="guest-card"><div class="guest-avatar">JD</div><div class="guest-name">Jérémie DENOUES</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">DD</div><div class="guest-name">Dominique DUVAL</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">JG</div><div class="guest-name">Jean-Marie GIRARDEL</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">TK</div><div class="guest-name">Thierry KISEL</div><div class="guest-role">Photo panoramique</div></div>
+                <div class="guest-card"><div class="guest-avatar">EM</div><div class="guest-name">Emmanuel MENETRIER</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">JM</div><div class="guest-name">Jean-Marc MEYER</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">AR</div><div class="guest-name">Aurélien RADIX</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">PR</div><div class="guest-name">Pascal RAVEY</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">OS</div><div class="guest-name">Olivier SKLER</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">FV</div><div class="guest-name">Frédérique VEAU</div><div class="guest-role">Aurores boréales</div></div>
+                <div class="guest-card"><div class="guest-avatar">MV</div><div class="guest-name">Michel VILLEQUEY</div><div class="guest-role">Photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar">HG</div><div class="guest-name">Hubert GENY</div><div class="guest-role">Animateur photographies</div></div>
+                <div class="guest-card"><div class="guest-avatar badge-fpf" style="background:linear-gradient(135deg,#2c7bb6,#1a5a8f)">FPF</div><div class="guest-name">Fédération Photographique de France</div><div class="guest-role">200 ans de la photographie</div></div>
+                <div class="guest-card"><div class="guest-avatar" style="background:linear-gradient(135deg,#2c7bb6,#1a5a8f)">PO</div><div class="guest-name">Collectif Phot'Offemont</div><div class="guest-role">Collectif du club</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTISTES -->
+    <section>
+        <h2>Artistes</h2>
+        <div class="card">
+            <div class="guests-grid">
+                <div class="guest-card"><div class="guest-avatar artist">BB</div><div class="guest-name">Bernard BRUGERON</div><div class="guest-role">Peintures</div></div>
+                <div class="guest-card"><div class="guest-avatar artist">LC</div><div class="guest-name">Laurance COINDRE</div><div class="guest-role">Peintures</div></div>
+                <div class="guest-card"><div class="guest-avatar artist">KK</div><div class="guest-name">KIKI</div><div class="guest-role">Peintures</div></div>
+                <div class="guest-card"><div class="guest-avatar artist">Lu</div><div class="guest-name">Lucette</div><div class="guest-role">Bijoux</div></div>
+                <div class="guest-card"><div class="guest-avatar artist">Pa</div><div class="guest-name">Pauline</div><div class="guest-role">Bricolage créatif</div></div>
+                <div class="guest-card"><div class="guest-avatar artist">MR</div><div class="guest-name">Marguerite RICHARD</div><div class="guest-role">Patchwork</div></div>
+                <div class="guest-card"><div class="guest-avatar artist">TS</div><div class="guest-name">Tronc Sonne Arts</div><div class="guest-role">Sculpture tronçonneuse</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFÉRENCES -->
+    <section>
+        <h2>Conférences &amp; Projections</h2>
+        <div class="card">
+            <h3>🎤 Conférences — Salle des aînés, MIEL</h3>
+            <div class="guests-grid">
+                <div class="guest-card"><div class="guest-avatar conf">DB</div><div class="guest-name">Djemila BESUCHET</div><div class="guest-role">"Créer sous l'eau… un espace suspendu"</div></div>
+                <div class="guest-card"><div class="guest-avatar conf">CR</div><div class="guest-name">Constance RAMEAUX</div><div class="guest-role">"Qui était Agathe COUTEMOINE ?"</div></div>
+                <div class="guest-card"><div class="guest-avatar conf">JD</div><div class="guest-name">Jean-François DELHOM</div><div class="guest-role">"Dans le ventre des glaciers"</div></div>
+                <div class="guest-card"><div class="guest-avatar conf">MH</div><div class="guest-name">Martine HUIN</div><div class="guest-role">"Rêves de Brume" (17 min)</div></div>
+                <div class="guest-card"><div class="guest-avatar conf">FV</div><div class="guest-name">Frédérique VEAU</div><div class="guest-role">"Photographier les aurores boréales" (30 min)</div></div>
+                <div class="guest-card"><div class="guest-avatar conf">TK</div><div class="guest-name">Thierry KISEL</div><div class="guest-role">"La photo panoramique ou l'effet BRENIZER"</div></div>
+                <div class="guest-card"><div class="guest-avatar conf">CE</div><div class="guest-name">CERAP</div><div class="guest-role">Démonstration "Terella" + observation du soleil</div></div>
+            </div>
+            <h3>🎬 Projections de films</h3>
+            <div class="guests-grid">
+                <div class="guest-card"><div class="guest-avatar conf">AA</div><div class="guest-name">André ANTOINE</div><div class="guest-role">Projection de film</div></div>
+                <div class="guest-card"><div class="guest-avatar conf">DD</div><div class="guest-name">Dominique DELFINO</div><div class="guest-role">Projection de film</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ATELIERS -->
+    <section>
+        <h2>Ateliers</h2>
+        <div class="card">
+            <div class="ateliers-grid">
+                <div class="atelier-card">
+                    <h4>🤖 Formation-action IA &amp; Art</h4>
+                    <p>Animé par <strong>Thierry Voitot</strong> (VIA GNOSIS). Découverte pratique de la création artistique assistée par intelligence artificielle.</p>
+                </div>
+                <div class="atelier-card">
+                    <h4>✍️ Atelier Écriture</h4>
+                    <p>Animé par <strong>Marie-Thérèse Lecrille</strong>, parolière et romancière. Initiation à l'écriture poétique et créative.</p>
+                </div>
+                <div class="atelier-card">
+                    <h4>🔵 Atelier Cyanotype</h4>
+                    <p>Animé par <strong>Phot'Offemont</strong>. Découverte de cette technique photographique ancienne et poétique.</p>
+                </div>
+            </div>
+            <div class="card-note">D'autres animations sur place : atelier initiation photo pour les enfants, jeu pour enfants, atelier drones.</div>
+        </div>
+    </section>
+
+    <!-- SUR PLACE -->
+    <section>
+        <h2>Sur place</h2>
+        <div class="card">
+            <div class="ateliers-grid">
+                <div class="atelier-card"><h4>🍺 Buvette</h4><p>Sur l'aire de restauration du site les deux jours.</p></div>
+                <div class="atelier-card"><h4>🍔 Food-trucks</h4><p>4 emplacements food-trucks pour votre restauration.</p></div>
+                <div class="atelier-card"><h4>📸 Pro Matériel</h4><p>Un professionnel en vente et réparation de matériel photo.</p></div>
+                <div class="atelier-card"><h4>🌿 Associations</h4><p>LPO, protection des animaux, gardes nature — stands gratuits.</p></div>
+                <div class="atelier-card"><h4>🧺 Producteurs locaux</h4><p>Présence de producteurs locaux du territoire.</p></div>
+                <div class="atelier-card"><h4>🎰 Tombola</h4><p>Tombola avec des lots à gagner — billets disponibles sur place.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Contact &amp; Informations</h2>
+        <div class="card">
+            <div class="contact-grid">
+                <div class="contact-item"><strong>📧 Email</strong><a href="mailto:tvoitot.ia@gmail.com">tvoitot.ia@gmail.com</a></div>
+                <div class="contact-item"><strong>📱 Téléphone</strong>+33 6 83 58 27 55</div>
+                <div class="contact-item"><strong>🌐 Club Phot'Offemont</strong><a href="https://www.photoffemont.com" target="_blank">photoffemont.com</a></div>
+                <div class="contact-item"><strong>🎨 Site artiste</strong><a href="https://tvt90.github.io/artist-presentation/" target="_blank">tvt90.github.io</a></div>
+            </div>
+            <div class="card-note">Pour toute question sur l'exposition, les ateliers ou les participations artistiques, contactez-nous.</div>
+            <a href="mailto:tvoitot.ia@gmail.com" class="btn">✉️ Nous contacter</a>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <strong>Photon-Expo 2026</strong> — Festival des Arts Visuels<br>
+    Vernissage vendredi 29 mai · Exposition samedi 30 &amp; dimanche 31 mai 2026<br>
+    Salle de la MIEL + Gymnase · Offemont, Territoire de Belfort<br><br>
+    Organisé par <a href="https://www.photoffemont.com" style="color:rgba(255,255,255,0.55)">Phot'Offemont</a> —
+    Site réalisé par <a href="https://tvt90.github.io/artist-presentation/" style="color:rgba(255,255,255,0.55)">Thierry Voitot — VIA GNOSIS</a>
+</footer>
+
+<script>
+function updateCountdown(){
+    const target=new Date('2026-05-29T18:30:00');
+    const diff=target-new Date();
+    if(diff<=0){['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id=>document.getElementById(id).textContent='0');return;}
+    document.getElementById('cd-days').textContent =Math.floor(diff/86400000);
+    document.getElementById('cd-hours').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('cd-mins').textContent =String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('cd-secs').textContent =String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+}
+updateCountdown();setInterval(updateCountdown,1000);
+</script>
+</body>
+</html>

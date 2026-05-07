@@ -227,6 +227,42 @@
         .contact-item { padding:1rem 1.2rem; background:var(--beige-light); border-radius:8px; }
         .contact-item strong { display:block; color:var(--violet); margin-bottom:0.3rem; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; }
 
+        /* ===== MUR DE LOGOS (Partenaires & Soutiens) ===== */
+        .logos-intro {
+            text-align: center;
+            color: var(--mid-text);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin: 0 0 1.5rem;
+        }
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+        .logo-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.2rem;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .logo-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(140,50,100,0.15);
+        }
+        .logo-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.05));
+        }
+
         .badge { display:inline-block; padding:0.22rem 0.65rem; border-radius:20px; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; vertical-align:middle; }
         .badge-honor { background:linear-gradient(135deg,#FFB347,#E8651A); color:white; }
         .badge-fpf   { background:linear-gradient(135deg,#2c7bb6,#1a5a8f); color:white; }
@@ -474,17 +510,42 @@
     </section>
 
     <section id="partenaires">
-        <h2>Partenaires &amp; Donateurs</h2>
+        <h2>Partenaires &amp; Soutiens</h2>
         <div class="card card-violet">
-            <h3>🌟 Partenaires</h3>
-            <div class="guests-grid">
-                <div class="guest-card"><div class="guest-avatar conf">VG</div><div class="guest-name">VIA GNOSIS</div><div class="guest-role">Partenaire</div></div>
+            <p class="logos-intro">Photon-Expo 2026 est rendu possible grâce à l'engagement et à la générosité de nos partenaires et soutiens.</p>
+
+            <h3>🏛️ Partenaires institutionnels</h3>
+            <div class="logos-grid">
+                <div class="logo-item"><img src="logos/mairie-offemont.jpg" alt="Mairie d'Offemont"></div>
+                <div class="logo-item"><img src="logos/territoire-belfort.png" alt="Conseil Départemental du Territoire de Belfort"></div>
+                <div class="logo-item"><img src="logos/ville-hericourt.jpg" alt="Ville d'Héricourt"></div>
+                <div class="logo-item"><img src="logos/credit-mutuel.jpg" alt="Crédit Mutuel"></div>
+                <div class="logo-item"><img src="logos/bureau-vallee.jpg" alt="Bureau Vallée"></div>
+                <div class="logo-item"><img src="logos/lorius.jpg" alt="LORIUS"></div>
+                <div class="logo-item"><img src="logos/planetarium-belfort.jpg" alt="Planétarium de Belfort — CERAP"></div>
+                <div class="logo-item"><img src="logos/fpf.jpg" alt="Fédération Photographique de France"></div>
+                <div class="logo-item"><img src="logos/ur08.jpg" alt="Union Régionale d'Art Photographique de Franche-Comté — UR 08"></div>
+                <div class="logo-item"><img src="logos/via-gnosis.png" alt="VIA GNOSIS"></div>
             </div>
-            <h3>🤝 Donateurs</h3>
-            <div class="guests-grid">
-                <div class="guest-card"><div class="guest-avatar honor">LO</div><div class="guest-name">LORIUS</div><div class="guest-role">Donateur</div></div>
+
+            <h3>🍔 Producteurs locaux &amp; restauration</h3>
+            <div class="logos-grid">
+                <div class="logo-item"><img src="logos/aux-pains-perdus.jpg" alt="Aux Pains Perdus 90 — Boulangerie artisanale"></div>
+                <div class="logo-item"><img src="logos/fontaines-jouvence.jpg" alt="Brasserie des Fontaines de Jouvence — Bruno Ladret"></div>
+                <div class="logo-item"><img src="logos/erhard.png" alt="Erhard — Pâtissier glacier"></div>
+                <div class="logo-item"><img src="logos/la-petite-patate.png" alt="La Petite Patate de Petra"></div>
+                <div class="logo-item"><img src="logos/le-rucher.jpg" alt="Le Rucher de l'ancienne Tuilerie — Jean-Christophe Welter"></div>
+                <div class="logo-item"><img src="logos/pollen-fleuriste.jpg" alt="Pollen Fleuriste"></div>
+                <div class="logo-item"><img src="logos/thai-lek-food.jpg" alt="Thai Lek Food — Alexandre Lievaux"></div>
             </div>
-            <div class="card-note">D'autres partenaires et donateurs nous rejoindront prochainement — cette section sera mise à jour.</div>
+
+            <h3>🎯 Avec le concours de</h3>
+            <div class="logos-grid">
+                <div class="logo-item"><img src="logos/adeo.jpg" alt="ADEO Manufacture — Signalétique"></div>
+                <div class="logo-item"><img src="logos/meta-jura.png" alt="Méta Jura — Étude et expression de l'Arc Jurassien"></div>
+            </div>
+
+            <div class="card-note">D'autres partenaires et soutiens nous rejoindront prochainement — cette section sera mise à jour.</div>
         </div>
     </section>
 

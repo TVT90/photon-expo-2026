@@ -187,6 +187,8 @@
         .highlight-box { background:var(--gradient); color:white; padding:1.3rem 1.5rem; border-radius:10px; text-align:center; margin:1.5rem 0; }
         .highlight-box strong { font-size:1.05rem; }
         .highlight-box p { margin:0.4rem 0 0; opacity:0.92; font-style:italic; font-size:0.93rem; }
+        a > .highlight-box { cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; }
+        a:hover > .highlight-box { transform:translateY(-2px); box-shadow:0 8px 22px rgba(140,50,100,0.28); }
 
         .tag-wrap { display:flex; flex-wrap:wrap; gap:0.7rem; margin-top:1rem; }
         .tag { background:white; padding:0.4rem 1rem; border-radius:20px; font-size:0.85rem; border:1.5px solid var(--orange); color:var(--orange); font-weight:600; }
@@ -397,6 +399,12 @@
                 <div class="prog-item"><span class="prog-time">17h30</span><span class="prog-desc">Clôture du festival — mot des organisateurs</span></div>
                 <div class="prog-item"><span class="prog-time">18h00</span><span class="prog-desc">Fermeture</span></div>
             </div>
+            <a href="https://www.photoffemont.com/pages/photon-expo-1/programme/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+                <div class="highlight-box">
+                    <strong>📋 Programme détaillé</strong>
+                    <p>Consultez le programme complet et les horaires précis sur le site Phot'Offemont →</p>
+                </div>
+            </a>
             <div class="card-note">Programme indicatif — des ajustements pourront intervenir. Consultez cette page régulièrement.</div>
         </div>
     </section>
